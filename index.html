@@ -61,8 +61,10 @@
     `);
   });
 
+  let tableEl = document.querySelector('#events');
+  
   // 3. Activate DataTables (adds search box, sort headers, responsive stacking)
-  new DataTable('#events', {
+  new DataTable(tableEl, {
     responsive: true,
     columnControl: ['order', ['orderAsc', 'orderDesc', 'search']]
   });
