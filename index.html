@@ -27,7 +27,6 @@
       <thead class="table-dark">
         <tr>
           <th>Name</th>
-          <th>Time</th>
           <th>Location</th>
         </tr>
       </thead>
@@ -45,17 +44,17 @@
   //    • If events.json is in *this* repo & branch, use "./events.json".
   //    • Otherwise, point at the raw-file URL, e.g.
   //      "https://raw.githubusercontent.com/your-user/your-repo/main/events.json"
-  const res   = await fetch('./events.json');
+  // const res   = await fetch('https://raw.githubusercontent.com/mikem651/json-table-website/refs/heads/main/events.json');
+  const res   = await fetch('https://raw.githubusercontent.com/pgaskin/orec2/refs/heads/data/data.json');
   const data  = await res.json();          // [{name, time, location}, …]
 
   // 2. Populate table body
   const tbody = document.querySelector('#events tbody');
-  data.forEach(evt => {
+  data.facilities.forEach(evt => {
     tbody.insertAdjacentHTML('beforeend', `
       <tr>
         <td>${evt.name}</td>
-        <td>${new Date(evt.time).toLocaleString()}</td>
-        <td>${evt.location}</td>
+        <td>${evt.address}</td>
       </tr>
     `);
   });
